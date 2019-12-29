@@ -7,6 +7,14 @@ zstyle ':user:load' usermodule \
     'autosuggestions' \
     'prompt'
 
+zstyle ':user:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'line' \
+  'cursor' \
+  'root'
+
 # Set 'pure' as the prompt
 zstyle ':user:module:prompt' theme 'pure'
 
