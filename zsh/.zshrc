@@ -1,6 +1,7 @@
 # Define the modules to be loaded
 zstyle ':user:load' usermodule \
     'history' \
+    'directory' \
     'completion' \
     'syntax-highlighting' \
     'history-substring-search' \
