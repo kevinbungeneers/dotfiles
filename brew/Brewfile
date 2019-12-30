@@ -1,0 +1,30 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "minio/stable"
+
+# CLI Tools
+brew "bat"
+brew "git"
+brew "git-lfs"
+brew "htop"
+brew "httpie"
+brew "jq"
+brew "stow"
+brew "tmux"
+brew "minio/stable/mc"
+
+# Applications
+cask "aerial"
+cask "alfred"
+cask "firefox", args: { language: "en" }
+cask "google-chrome"
+cask "iterm2"
+cask "phpstorm"
+cask "postman"
+cask "sublime-text"
+cask "transmission"
+cask "transmit"
+cask "visual-studio-code"
+cask "vlc"
+cask "vmware-fusion"
