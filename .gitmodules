@@ -13,3 +13,9 @@
 [submodule "zsh/.zsh/modules/autosuggestions/external"]
 	path = zsh/.zsh/modules/autosuggestions/external
 	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "vim/.vim/pack/plugins/start/lightline"]
+	path = vim/.vim/pack/plugins/start/lightline
+	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/.vim/pack/plugins/start/nerdtree"]
+	path = vim/.vim/pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
