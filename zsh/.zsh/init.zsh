@@ -80,6 +80,11 @@ function usermodload {
   done
 }
 
+# Checks if a name is a command, function, or alias.
+function is-callable {
+  (( $+commands[$1] || $+functions[$1] || $+aliases[$1] || $+builtins[$1] ))
+}
+
 # Load Zsh modules.
 zstyle -a ':user:load' zmodule 'zmodules'
 for zmodule ("$zmodules[@]") zmodload "zsh/${(z)zmodule}"

@@ -2,6 +2,7 @@
 zstyle ':user:load' usermodule \
     'history' \
     'directory' \
+    'utility' \
     'completion' \
     'syntax-highlighting' \
     'history-substring-search' \
@@ -15,6 +16,9 @@ zstyle ':user:module:syntax-highlighting' highlighters \
   'line' \
   'cursor' \
   'root'
+
+# Colorize all the things
+zstyle ':user:*:*' color 'yes'
 
 # Set 'pure' as the prompt
 zstyle ':user:module:prompt' theme 'pure'
