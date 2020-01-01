@@ -5,6 +5,7 @@ tap "minio/stable"
 
 # CLI Tools
 brew "bat"
+brew "diff-so-fancy"
 brew "git"
 brew "git-lfs"
 brew "htop"
