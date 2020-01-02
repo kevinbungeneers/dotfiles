@@ -1,0 +1,61 @@
+{
+  "alfredtheme" : {
+    "result" : {
+      "textSpacing" : 5,
+      "subtext" : {
+        "size" : 10,
+        "colorSelected" : "#88BFD0FF",
+        "font" : "System",
+        "color" : "#5D81ABFF"
+      },
+      "shortcut" : {
+        "size" : 16,
+        "colorSelected" : "#EBEFF3FF",
+        "font" : "System",
+        "color" : "#81A1C0FF"
+      },
+      "backgroundSelected" : "#3B4251FF",
+      "text" : {
+        "size" : 18,
+        "colorSelected" : "#EBEFF3FF",
+        "font" : "System",
+        "color" : "#81A1C0FF"
+      },
+      "iconPaddingHorizontal" : 10,
+      "paddingVertical" : 8,
+      "iconSize" : 36
+    },
+    "search" : {
+      "paddingVertical" : 0,
+      "background" : "#2E343FFF",
+      "spacing" : 8,
+      "text" : {
+        "size" : 28,
+        "colorSelected" : "#EBEFF3FF",
+        "font" : "System",
+        "color" : "#EBEFF3FF"
+      },
+      "backgroundSelected" : "#4C556AFF"
+    },
+    "window" : {
+      "color" : "#2E343FFF",
+      "paddingHorizontal" : 0,
+      "width" : 559,
+      "borderPadding" : 0,
+      "borderColor" : "#00000000",
+      "blur" : 40,
+      "roundness" : 5,
+      "paddingVertical" : 7
+    },
+    "credit" : "Kevin Bungeneers",
+    "separator" : {
+      "color" : "#CBCBCBF3",
+      "thickness" : 0
+    },
+    "scrollbar" : {
+      "color" : "#8EBCBBFF",
+      "thickness" : 2
+    },
+    "name" : "Nord"
+  }
+}
