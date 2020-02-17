@@ -27,3 +27,7 @@ zstyle ':user:module:prompt' theme 'pure'
 if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
 fi
+
+eval "$(nodenv init -)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
