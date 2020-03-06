@@ -13,9 +13,11 @@ brew "httpie"
 brew "jq"
 brew "mkcert"
 brew "nodenv"
+brew "pv"
 brew "nss"
 brew "stow"
 brew "tmux"
+brew "xz"
 brew "minio/stable/mc"
 
 # Applications
