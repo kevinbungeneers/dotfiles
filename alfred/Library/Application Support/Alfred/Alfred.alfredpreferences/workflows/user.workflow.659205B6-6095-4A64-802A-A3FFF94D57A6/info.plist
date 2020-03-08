@@ -73,6 +73,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>A28CDB34-28B2-4879-91B3-CF2C5E9773BB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CF7EAFE9-923C-4024-BF18-3DC1FE5F60BF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>AA54A46F-0ECF-404B-ABE1-4FE3DF1D334F</key>
 		<array>
 			<dict>
@@ -496,6 +509,54 @@ end openTab</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>11</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>B</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>A28CDB34-28B2-4879-91B3-CF2C5E9773BB</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/System/Volumes/Data/Applications/Safari.app</string>
+				</array>
+				<key>toggle</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>CF7EAFE9-923C-4024-BF18-3DC1FE5F60BF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -578,12 +639,26 @@ end openTab</string>
 			<key>ypos</key>
 			<integer>165</integer>
 		</dict>
+		<key>A28CDB34-28B2-4879-91B3-CF2C5E9773BB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>890</integer>
+		</dict>
 		<key>AA54A46F-0ECF-404B-ABE1-4FE3DF1D334F</key>
 		<dict>
 			<key>xpos</key>
 			<integer>35</integer>
 			<key>ypos</key>
 			<integer>555</integer>
+		</dict>
+		<key>CF7EAFE9-923C-4024-BF18-3DC1FE5F60BF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>320</integer>
+			<key>ypos</key>
+			<integer>895</integer>
 		</dict>
 		<key>E685A5C4-962B-4505-9894-5CD6E19D76B3</key>
 		<dict>
