@@ -1,6 +1,5 @@
-*.zwc
-*.zwc.old
-.zcompdump
-.zhistory
-Brewfile.lock.json
+/bat/
+/git/
+/htop/
+
 karabiner/automatic_backups/*
