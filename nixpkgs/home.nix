@@ -15,9 +15,6 @@
     pkgs.ripgrep
   ];
 
-  # home.file."Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings".source = ./home/sublimetext/Preferences.sublime-settings;
-  # home.file.".config/karabiner/karabiner.json".source = ./home/karabiner/karabiner.json;
-
   imports = [
     ./home/zsh
     ./home/git
@@ -28,6 +25,7 @@
     ./home/jq
     ./home/tmux
     ./home/vim
+    ./home/sublimetext
   ];
   
   home.stateVersion = "21.05";
