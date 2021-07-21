@@ -7,7 +7,6 @@
   home.homeDirectory = "/Users/kevin";
 
   home.packages = [
-    pkgs.diff-so-fancy
     pkgs.git-lfs
     pkgs.httpie
     pkgs.mkcert

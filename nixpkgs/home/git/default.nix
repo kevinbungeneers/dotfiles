@@ -24,11 +24,27 @@
     };
     delta = {
       enable = true;
+      options = {
+        features = "side-by-side line-numbers decorations";
+        syntax-theme = "Dracula";
+        whitespace-error-style = "22 reverse";
+        decorations = {
+          commit-decoration-style = "bold yellow box ul";
+          file-style = "bold yellow ul";
+          file-decoration-style = "none";
+        };
+      };
     };
     extraConfig = {
       core = {
         editor = "vim";
-        # pager = "diff-so-fancy | less --tabs=4 -RFX";
+      };
+
+      pager = {
+        diff = "delta";
+        log = "delta";
+        reflog = "delta";
+        show = "delta";
       };
 
       init = {
