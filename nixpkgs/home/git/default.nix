@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.file.".config/git/config_work".source = ./config_work;
+  home.file.".config/git/config.work".source = ./config.work;
 
   programs.git = {
     package = pkgs.gitAndTools.gitFull;
@@ -54,10 +54,6 @@
         };
       };
 
-      commit = {
-        gpgsign = true;
-      };
-
       push = {
         default = "tracking";
       };
@@ -71,12 +67,12 @@
         };
       };
     };
-    # includes = [
-    #   {
-    #     path = "~/.config/git/config_work";
-    #     # condition = "";
-    #   }
-    # ];
+    includes = [
+      {
+        path = "~/.config/git/config.work";
+        condition = "gitdir:~/Projects/Work/";
+      }
+    ];
     ignores = [
       # Compiled source #
       "*.com"
