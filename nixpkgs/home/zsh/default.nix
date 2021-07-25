@@ -47,11 +47,9 @@
       ZSH_HIGHLIGHT_HIGHLIGHTERS = ["main" "brackets" "pattern" "line" "cursor" "root"];
     };
 
-    # shellAliases = {
-    #   ls = "ls -G";
-    #   ll = "ls -lh";
-    #   la = "ll -A";
-    # };
+    shellAliases = {
+      cat = "bat --paging=never";
+    };
 
     history = {
       extended = true;
