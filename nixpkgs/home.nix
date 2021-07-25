@@ -26,6 +26,7 @@
     ./home/vim
     ./home/go
     ./home/sublimetext
+    ./home/hammerspoon
   ];
   
   home.stateVersion = "21.05";
