@@ -12,10 +12,12 @@
     pkgs.mkcert
     pkgs.nss
     pkgs.ripgrep
+    pkgs.fd
   ];
 
   imports = [
     ./home/zsh
+    ./home/exa
     ./home/git
     ./home/gpg
     ./home/bat
