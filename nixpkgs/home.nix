@@ -24,6 +24,7 @@
     ./home/jq
     ./home/tmux
     ./home/vim
+    ./home/go
     ./home/sublimetext
   ];
   
