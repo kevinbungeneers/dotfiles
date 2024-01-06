@@ -16,7 +16,7 @@
     ];
     changeDirWidgetCommand = "fd --type d";
     changeDirWidgetOptions = [
-      "--preview 'exa --tree {} | head -200'"
+      "--preview 'lsd --tree {} | head -200'"
     ];
   };
 }

@@ -1,2 +1,1 @@
-. $HOME/.nix-profile/etc/profile.d/nix.sh
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:/Users/kevin/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"

@@ -1,0 +1,18 @@
+set laststatus=2
+set noshowmode
+set ttimeoutlen=50
+set number
+
+syntax enable
+packadd! nord-vim | colorscheme nord
+
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
+
+map <C-o> :NERDTreeToggle<CR>
+
+set title
+set t_ts=]6;
+set t_fs=
+set titlestring=%{bufname('%')==''?'':'file://'.hostname().expand('%:p:gs/\ /%20/')}

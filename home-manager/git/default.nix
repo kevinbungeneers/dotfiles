@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.file.".config/git/config.work".source = ./config.work;
-
   programs.git = {
     package = pkgs.gitAndTools.gitFull;
     enable = true;
@@ -19,14 +17,14 @@
       shortnocolor = "log --pretty=format:\"%h %cr %cn %s\"";
     };
     signing = {
-      key = "F043696D21873D80";
+      key = "F043696D21873D80!";
       signByDefault = true;
     };
     delta = {
       enable = true;
       options = {
         features = "side-by-side line-numbers decorations";
-        syntax-theme = "Dracula";
+        syntax-theme = "Nord";
         whitespace-error-style = "22 reverse";
         decorations = {
           commit-decoration-style = "bold yellow box ul";
@@ -74,6 +72,10 @@
         default = "tracking";
       };
 
+      pull = {
+        rebase = false;
+      };
+
       filter = {
         lfs = {
           required = true;
@@ -83,12 +85,6 @@
         };
       };
     };
-    includes = [
-      {
-        path = "~/.config/git/config.work";
-        condition = "gitdir:~/Projects/Work/";
-      }
-    ];
     ignores = [
       # Compiled source #
       "*.com"
@@ -110,7 +106,7 @@
 
       # Logs and databases #
       "*.log"
-      "*.sql"
+      # "*.sql"
       "*.sqlite"
 
       # OS generated files #

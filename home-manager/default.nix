@@ -1,35 +1,35 @@
 { config, pkgs, ... }:
 
 {
-  programs.home-manager.enable = true;
-
   home.username = "kevin";
   home.homeDirectory = "/Users/kevin";
+  home.stateVersion = "23.11";
 
   home.packages = [
     pkgs.git-lfs
-    pkgs.httpie
     pkgs.mkcert
-    pkgs.nss
+    pkgs.nssTools
     pkgs.ripgrep
     pkgs.fd
+    pkgs.dive
+    pkgs.cachix
+    pkgs.devenv
   ];
 
   imports = [
-    ./home/zsh
-    ./home/exa
-    ./home/git
-    ./home/gpg
-    ./home/bat
-    ./home/fzf
-    ./home/htop
-    ./home/jq
-    ./home/tmux
-    ./home/vim
-    ./home/go
-    ./home/sublimetext
-    ./home/hammerspoon
+    ./zsh
+    ./direnv
+    ./lsd
+    ./git
+    ./gpg
+    ./bat
+    ./fzf
+    ./htop
+    ./jq
+    ./tmux
+    ./vim
+    ./sublimetext
   ];
-  
-  home.stateVersion = "21.05";
+
+  programs.home-manager.enable = true;
 }
