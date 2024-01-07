@@ -8,21 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    devenv = {
-      url = "github:cachix/devenv/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { home-manager, nixpkgs, devenv, self, ... }:
+  outputs = { home-manager, nixpkgs, self, ... }:
     let
       system = "aarch64-darwin";
-      overlay = final: prev: {
-        inherit nixpkgs;
-        devenv = devenv.packages.${system}.devenv;
-      };
-      pkgs = (nixpkgs.legacyPackages.${system}.extend overlay);
+      pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations = {
         "kevin@Kevins-MacBook-Pro" = home-manager.lib.homeManagerConfiguration {

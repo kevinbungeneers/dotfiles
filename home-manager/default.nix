@@ -12,7 +12,6 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.dive
-    pkgs.devenv
   ];
 
   imports = [
