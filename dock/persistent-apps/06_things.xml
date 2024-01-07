@@ -1,0 +1,28 @@
+<dict>
+	<key>tile-type</key>
+	<string>file-tile</string>
+	
+	<key>tile-data</key>
+	<dict>
+		<key>bundle-identifier</key>
+		<string>com.culturedcode.ThingsMac</string>
+
+		<key>file-label</key>
+		<string>Things</string>
+
+		<key>file-type</key>
+		<integer>1</integer>
+
+		<key>dock-extra</key>
+		<false/>
+
+		<key>file-data</key>
+		<dict>
+			<key>_CFURLString</key>
+			<string>file:///Applications/Things3.app/</string>
+
+			<key>_CFURLStringType</key>
+			<integer>15</integer>
+		</dict>
+	</dict>
+</dict>

@@ -1,0 +1,28 @@
+<dict>
+	<key>tile-type</key>
+	<string>file-tile</string>
+	
+	<key>tile-data</key>
+	<dict>
+		<key>bundle-identifier</key>
+		<string>com.apple.MobileSMS</string>
+
+		<key>file-label</key>
+		<string>Messages</string>
+
+		<key>file-type</key>
+		<integer>41</integer>
+
+		<key>dock-extra</key>
+		<false/>
+
+		<key>file-data</key>
+		<dict>
+			<key>_CFURLString</key>
+			<string>file:///System/Applications/Messages.app/</string>
+
+			<key>_CFURLStringType</key>
+			<integer>15</integer>
+		</dict>
+	</dict>
+</dict>

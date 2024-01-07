@@ -1,0 +1,28 @@
+<dict>
+	<key>tile-type</key>
+	<string>file-tile</string>
+	
+	<key>tile-data</key>
+	<dict>
+		<key>bundle-identifier</key>
+		<string>com.apple.systempreferences</string>
+
+		<key>file-label</key>
+		<string>System Settings</string>
+
+		<key>file-type</key>
+		<integer>41</integer>
+
+		<key>dock-extra</key>
+		<true/>
+
+		<key>file-data</key>
+		<dict>
+			<key>_CFURLString</key>
+			<string>file:///System/Applications/System%20Settings.app/</string>
+
+			<key>_CFURLStringType</key>
+			<integer>15</integer>
+		</dict>
+	</dict>
+</dict>
