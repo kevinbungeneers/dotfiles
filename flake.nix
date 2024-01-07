@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { home-manager, nixpkgs, devenv, ... }:
+  outputs = { home-manager, nixpkgs, devenv, self, ... }:
     let
       system = "aarch64-darwin";
       overlay = final: prev: {
@@ -30,5 +30,8 @@
           modules = [ ./home-manager ];
         };
       };
+
+      # Make the home configuration for kevin@Kevins-MacBook-Pro the default, as it's the only one.
+      defaultPackage.${system} = self.homeConfigurations."kevin@Kevins-MacBook-Pro".activationPackage;
     };
 }

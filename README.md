@@ -30,7 +30,7 @@ git clone git@github.com:kevinbungeneers/dotfiles.git
 
 Enter the dotfiles directory and run:
 ```console
-nix build ".#homeConfigurations.kevin@Kevins-MacBook-Pro.activationPackage"
+nix build
 result/activate
 ```
 
