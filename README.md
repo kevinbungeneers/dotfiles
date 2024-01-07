@@ -58,3 +58,16 @@ Activating a specific generation:
 ```console
 /nix/store/jyjpp3glrv202sck83y04ji0cl538rjn-home-manager-generation/activate
 ```
+
+## Removing old generations
+As time goes by and the number of generations grows, your nix store will inevitably grow too. Running `nix store gc` won't be as effective, as those binaries are still linked to a home-manager generation.
+
+This is why it's a good idea to remove some older generations from time to time. You can either remove specific generations by doing:
+```console
+home-manager remove-generations 1 2
+```
+
+Or, remove generations that are older than, for instance, 30 days:
+```console
+home-manager expire-generations "-30 days"
+```
