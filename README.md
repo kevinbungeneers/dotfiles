@@ -19,8 +19,27 @@ There are several ways to install Nix. You can use the [official installer](http
 
 Either one is fine. The one from Determinate Systems has some quality-of-life improvements, such as:
 - survives macOS updates (see https://github.com/NixOS/nix/issues/3616)
-- doesn't configure channels, as we're using flakes anyway
+- doesn't configure channels and enables flake support by default
 - offers a built-in way to perform an uninstall
+
+If you went with the official installer, make sure that the `experimental-features` is set to `flakes nix-command repl-flake`. You can check by running:
+```console
+nix show-config
+```
+
+If `experimental-features` is not set or does not contain `flakes`, `nix-command` and `repl-flake`, set them by configuring Nix:
+```console
+mkdir -p ~/.config/nix
+cat <<EOF >> ~/.config/nix/nix.conf
+experimental-features = flakes nix-command repl-flake
+EOF
+```
+
+Finally, restart the Nix daemon:
+```console
+sudo launchctl stop org.nixos.nix-daemon
+sudo launchctl start org.nixos.nix-daemon
+```
 
 ### Installing our dotfiles
 Now that we have both our development tools and the nix package manager installed, it's time to clone this repository:
