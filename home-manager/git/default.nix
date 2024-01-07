@@ -5,7 +5,7 @@
     package = pkgs.gitAndTools.gitFull;
     enable = true;
     userName = "Kevin Bungeneers";
-    userEmail = "kevin@bungerous.be";
+    userEmail = "git@bungerous.be";
     aliases = {
       co = "checkout";
       st = "status";
@@ -17,7 +17,7 @@
       shortnocolor = "log --pretty=format:\"%h %cr %cn %s\"";
     };
     signing = {
-      key = "F043696D21873D80!";
+      key = "5195040C8E0B6245!";
       signByDefault = true;
     };
     delta = {
