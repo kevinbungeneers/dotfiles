@@ -49,11 +49,8 @@ git clone git@github.com:kevinbungeneers/dotfiles.git
 
 Enter the dotfiles directory and run:
 ```console
-nix build
-result/activate
+nix run home-manager -- switch --flake .
 ```
-
-This will effectively install our dotfiles, along with all it's dependencies, as a package.
 
 ## Making changes
 Much like a home, dotfiles are never finished. Every now and then you'll switch things up and add, replace or remove tooling and/or configuration options.
@@ -63,7 +60,6 @@ home-manager switch --flake .
 ```
 
 **Note:** If your home configuration is named like `<user>@<host>`, home-manager will automatically pick the right configuration to apply. Otherwise, you'll need to specify your configuration explicitely, like so: `home-manager switch --flake ".#<name-of-your-configuration>`
-
 
 ## Rolling back changes
 With each switch you execute, home-manager will create a new "generation". If you were to break something, you could easily perform a rollback to a previous generation.

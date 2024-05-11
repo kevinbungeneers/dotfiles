@@ -7,7 +7,7 @@
 
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
 
     plugins = [
       {

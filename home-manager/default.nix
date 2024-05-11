@@ -7,11 +7,8 @@
 
   home.packages = [
     pkgs.git-lfs
-    pkgs.mkcert
-    pkgs.nssTools
     pkgs.ripgrep
     pkgs.fd
-    pkgs.dive
   ];
 
   imports = [
