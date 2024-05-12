@@ -6,7 +6,7 @@ Most of it is managed with [nix](https://nixos.org/) and [home-manager](https://
 **Note:** The steps described in this section are written with a clean macOS installation in mind and serve mostly as documentation for myself.
 
 ### Fonts
-I'm using [powerlevel10k](https://github.com/romkatv/powerlevel10k) as ZSH theme. In order for that theme to actually look good, you'll need to have the [MesloLGS NF](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Meslo.zip) fonts installed. More specifically, the `MesloLGSNerdFontMono-{Bold,BoldItalic,Italic,Regular}.tff` fonts.
+I'm using [powerlevel10k](https://github.com/romkatv/powerlevel10k) as ZSH theme. In order for that theme to actually look good, you'll need to have the [MesloLGS NF](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip) fonts installed. More specifically, the `MesloLGSNerdFontMono-{Bold,BoldItalic,Italic,Regular}.tff` fonts.
 
 ### Terminal
 My terminal emulator of choice is the one that's included with the OS. I've added a custom terminal configuration, based on [this one](https://github.com/nordtheme/terminal-app). I've changed the default font to the one mentioned above, changed the default window size, etc.
