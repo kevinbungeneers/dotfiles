@@ -44,7 +44,7 @@ sudo launchctl start org.nixos.nix-daemon
 ### Installing our dotfiles
 Now that we have both our development tools and the nix package manager installed, it's time to clone this repository:
 ```console
-git clone git@github.com:kevinbungeneers/dotfiles.git
+git clone git@github.com:kevinbungeneers/dotfiles.git ~/.dotfiles
 ```
 
 Enter the dotfiles directory and run:
