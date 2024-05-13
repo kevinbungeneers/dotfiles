@@ -6,7 +6,7 @@ defaults write com.apple.dock "tilesize" -int "36"
 # Enable magnification of the dock on hover.
 defaults write com.apple.dock "magnification" -bool "true"
 
-# Sets the tile size, on hover, to 48px.
+# Sets the tile size, on hover, to 56px.
 defaults write com.apple.dock "largesize" -int "56"
 
 # Do not show indicators for open applications.
@@ -25,7 +25,7 @@ defaults write com.apple.dock "autohide-delay" -float "0"
 defaults write com.apple.dock "minimize-to-application" -bool "true"
 
 # Scroll up on a dock icon to show all opened windows for an app (in the active space), or open stack.
-defaults write com.apple.dock "scroll-to-open" -bool "true"
+#defaults write com.apple.dock "scroll-to-open" -bool "true"
 
 # Persistent apps are those that you typically drag into the Dock.
 # We're going to clear the ones that are currently configured and add those that we find in the persistent-apps directory.
@@ -69,4 +69,3 @@ done
 defaults write com.apple.dock ResetLaunchPad -bool true
 
 killall Dock
-

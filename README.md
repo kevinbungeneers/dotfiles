@@ -11,6 +11,13 @@ I'm using [powerlevel10k](https://github.com/romkatv/powerlevel10k) as ZSH theme
 ### Terminal
 My terminal emulator of choice is the one that's included with the OS. I've added a custom terminal configuration, based on [this one](https://github.com/nordtheme/terminal-app). I've changed the default font to the one mentioned above, changed the default window size, etc.
 
+### Dock
+Going through System Settings and dragging icons in and out of the dock is a bit too tedious for my taste. That's why I created a little script that configures the dock just the way I like:
+```console
+cd ~/.dotfiles/dock
+./configure.zsh
+```
+
 ### Development Tools
 Make sure you have your development tools installed. Running `xcode-select --install` in your terminal should work just fine, or you could install Xcode in full.
 
