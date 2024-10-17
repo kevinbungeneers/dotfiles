@@ -16,13 +16,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations = {
-        "kevin@Kevins-MacBook-Pro" = home-manager.lib.homeManagerConfiguration {
+        "kevin" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home-manager ];
         };
       };
-
-      # Make the home configuration for kevin@Kevins-MacBook-Pro the default, as it's the only one.
-      defaultPackage.${system} = self.homeConfigurations."kevin@Kevins-MacBook-Pro".activationPackage;
     };
 }

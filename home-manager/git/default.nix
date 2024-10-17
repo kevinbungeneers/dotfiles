@@ -70,6 +70,7 @@
 
       push = {
         default = "tracking";
+        autoSetupRemote = true;
       };
 
       pull = {
