@@ -3,7 +3,7 @@
 {
   home.username = "kevin";
   home.homeDirectory = "/Users/kevin";
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 
   home.packages = [
     pkgs.git-lfs
