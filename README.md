@@ -59,6 +59,14 @@ Enter the dotfiles directory and run:
 nix run home-manager -- switch --flake .
 ```
 
+### A note about ZSH
+If you want to use the version of ZSH that's been installed with Nix and home-manager, you'll need to set it manually:
+```console
+echo ~/.nix-profile/bin/zsh | sudo tee -a /etc/shells
+chsh -s ~/.nix-profile/bin/zsh
+```
+
+
 ## Making changes
 Much like a home, dotfiles are never finished. Every now and then you'll switch things up and add, replace or remove tooling and/or configuration options.
 Any changes you've made will need to be be activated. From within your dotfiles directory:
