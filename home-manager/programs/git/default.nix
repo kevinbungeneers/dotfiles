@@ -15,6 +15,7 @@
     short = "log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"";
     changelog = "log --pretty=format:\" * %s\"";
     shortnocolor = "log --pretty=format:\"%h %cr %cn %s\"";
+    cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
   };
 
   signing = {
