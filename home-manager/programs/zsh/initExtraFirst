@@ -56,3 +56,7 @@ if [ -z "$INSIDE_EMACS" ]; then
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd update_terminal_cwd
 fi
+
+if command -v $HOME/.local/bin/mise &> /dev/null; then
+    eval "$($HOME/.local/bin/mise activate zsh)"
+fi
