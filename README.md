@@ -34,11 +34,11 @@ If you went with the official installer, make sure that the `experimental-featur
 nix show-config
 ```
 
-If `experimental-features` is not set or does not contain `flakes`, `nix-command` and `repl-flake`, set them by configuring Nix:
+If `experimental-features` is not set or does not contain `flakes` and `nix-command`, set them by configuring Nix:
 ```console
 mkdir -p ~/.config/nix
 cat <<EOF >> ~/.config/nix/nix.conf
-experimental-features = flakes nix-command repl-flake
+experimental-features = flakes nix-command
 EOF
 ```
 
@@ -69,19 +69,19 @@ chsh -s ~/.nix-profile/bin/zsh
 
 ## Making changes
 Much like a home, dotfiles are never finished. Every now and then you'll switch things up and add, replace or remove tooling and/or configuration options.
-Any changes you've made will need to be be activated. From within your dotfiles directory:
+Any changes you've made will need to be activated. From within your dotfiles directory:
 ```console
-home-manager switch --flake .
+nix run home-manager -- switch --flake .
 ```
 
-**Note:** If your home configuration is named like `<user>@<host>`, home-manager will automatically pick the right configuration to apply. Otherwise, you'll need to specify your configuration explicitely, like so: `home-manager switch --flake ".#<name-of-your-configuration>`
+**Note:** If your home configuration is named like `<user>`, home-manager will automatically pick the right configuration to apply. Otherwise, you'll need to specify your configuration explicitly, like so: `home-manager switch --flake ".#<name-of-your-configuration>`
 
 ## Rolling back changes
 With each switch you execute, home-manager will create a new "generation". If you were to break something, you could easily perform a rollback to a previous generation.
 
 List all generations:
 ```console
-home-manager generations
+nix run home-manager -- generations
 ```
 
 Activating a specific generation:
@@ -94,10 +94,10 @@ As time goes by and the number of generations grows, your nix store will inevita
 
 This is why it's a good idea to remove some older generations from time to time. You can either remove specific generations by doing:
 ```console
-home-manager remove-generations 1 2
+nix run home-manager -- remove-generations 1 2
 ```
 
 Or, remove generations that are older than, for instance, 30 days:
 ```console
-home-manager expire-generations "-30 days"
+nix run home-manager -- expire-generations "-30 days"
 ```
