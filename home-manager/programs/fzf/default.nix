@@ -1,6 +1,7 @@
 {
   enable = true;
   enableZshIntegration = true;
+  enableFishIntegration = true;
   defaultCommand = "fd --type f";
   defaultOptions = [
     "--height 40%"

@@ -13,6 +13,7 @@
     bat     = import ./programs/bat;
     direnv  = import ./programs/direnv;
     fd      = import ./programs/fd;
+    fish    = import ./programs/fish;
     fzf     = import ./programs/fzf;
     gh      = import ./programs/gh;
     git     = import ./programs/git;
@@ -23,6 +24,5 @@
     ripgrep = import ./programs/ripgrep;
     tmux    = import ./programs/tmux;
     vim     = import ./programs/vim { inherit pkgs; };
-    zsh     = import ./programs/zsh { inherit pkgs; };
   };
 }
