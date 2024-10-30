@@ -13,6 +13,10 @@
 
     # Disable the fish greeting
     set -g fish_greeting
+
+    # $PATH stuff
+    fish_add_path -p /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
+    fish_add_path -p ~/Library/Application\ Support/JetBrains/Toolbox/scripts
   '';
 
   shellAliases = {
