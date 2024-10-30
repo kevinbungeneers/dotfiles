@@ -7,6 +7,7 @@
 
   home.file = {
     "Library/Application Support/Sublime Text/Packages/home-manager/Preferences.sublime-settings".source = ./files/sublime-text/Preferences.sublime-settings;
+    ".config/fish/fish_variables".source = ./files/fish/fish_variables;
   };
 
   programs = {

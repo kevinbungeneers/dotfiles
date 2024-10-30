@@ -1,15 +1,18 @@
 {
   enable = true;
   shellInit = ''
-    # Nix
+    # Source the nix daemon
     if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
       source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
     end
-    # End Nix
 
+    # Activate mise for this session
     if type -q $HOME/.local/bin/mise
       eval "$($HOME/.local/bin/mise activate fish)"
     end
+
+    # Disable the fish greeting
+    set -g fish_greeting
   '';
 
   shellAliases = {
@@ -21,6 +24,11 @@
     fish_title = {
       body = ''
         printf '\a\e]7;file://''${hostname}/%s' (echo -n $PWD | sed 's/ /%20/g')
+      '';
+    };
+    fish_prompt = {
+      body = ''
+        echo -ne '\n❱ '
       '';
     };
   };
