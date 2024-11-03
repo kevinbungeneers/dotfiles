@@ -23,7 +23,6 @@
     jq      = import ./programs/jq;
     lsd     = import ./programs/lsd;
     ripgrep = import ./programs/ripgrep;
-    tmux    = import ./programs/tmux;
     vim     = import ./programs/vim { inherit pkgs; };
   };
 }
