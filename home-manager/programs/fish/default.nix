@@ -17,6 +17,15 @@
     # $PATH stuff
     fish_add_path -p /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
     fish_add_path -p ~/Library/Application\ Support/JetBrains/Toolbox/scripts
+
+    # Source functions
+    add_newline
+
+    # CTRL+G CTRL+L for Git Log, using fzf
+    bind \cg\cl _fzf_git_log
+
+    # CTRL+G CTRL+B for Git Branches, using fzf
+    bind \cg\cb _fzf_git_branches
   '';
 
   shellAliases = {
@@ -32,12 +41,92 @@
     };
     fish_prompt = {
       body = ''
-        echo -ne '\n❱ '
+        echo '❱ '
+      '';
+    };
+    add_newline = {
+      description = "Adds a newline after command output";
+      onEvent = "fish_postexec";
+      body = ''
+        echo -ne '\n'
+      '';
+    };
+    _fzf_git_fzf = {
+      description = "Wraps fzf for git related stuff";
+      body = ''
+        set -f --export SHELL (command --search fish)
+        fzf $argv
+      '';
+    };
+    _fzf_git_check = {
+      description = "Helper function to check if we're in a git repository";
+      body = ''
+        git rev-parse --git-dir >/dev/null 2>&1 && return
+
+        set_color red
+        echo "Not in a git repository"
+        set_color normal
+
+        commandline --function repaint
+
+        return 1
+      '';
+    };
+    _fzf_git_log = {
+      description = "Search the output of git log and preview commits";
+      body = ''
+        _fzf_git_check || return
+
+        # %h gives you the abbreviated commit hash, which is useful for saving screen space, but we will have to expand it later below
+        set -f fzf_git_log_format '%C(bold blue)%h%C(reset) - %C(cyan)%ad%C(reset) %C(yellow)%d%C(reset) %C(normal)%s%C(reset)  %C(dim normal)[%an]%C(reset)'
+
+        set -f preview_cmd 'git show --color=always --stat --patch {1} | delta --side-by-side --paging=never --line-numbers -w $FZF_PREVIEW_COLUMNS'
+
+        set -f selected_log_lines (
+          git log --no-show-signature --color=always --format=format:$fzf_git_log_format --date=short | \
+          _fzf_git_fzf --ansi \
+            --multi \
+            --scheme=history \
+            --prompt="Git Log ❱ " \
+            --preview=$preview_cmd \
+            --preview-window='down,50%,border-top' \
+            --query=(commandline --current-token) \
+            $fzf_git_log_opts
+        )
+        if test $status -eq 0
+          for line in $selected_log_lines
+            set -f abbreviated_commit_hash (string split --field 1 " " $line)
+            set -f full_commit_hash (git rev-parse $abbreviated_commit_hash)
+            set -f --append commit_hashes $full_commit_hash
+          end
+          commandline --current-token --replace (string join ' ' $commit_hashes)
+        end
+
+        commandline --function repaint
+      '';
+    };
+    _fzf_git_branches = {
+      description = "Search the output of git log and preview commits";
+      body = ''
+        _fzf_git_check || return
+
+        set -f selected_branch (
+          git branch --sort=-committerdate --sort=-HEAD --format='%(HEAD)$#$%(color:yellow)%(refname:short)$#$%(color:green)(%(committerdate:relative))$#$%(color:blue)%(subject)%(color:reset)' --color=always | column -ts'$#$' | sed 's/^...//' |
+            _fzf_git_fzf --ansi \
+            --prompt="Git Branches ❱ " \
+            --tiebreak=begin \
+            --preview-window=down,border-top,40% \
+            --color hl:underline,hl+:underline \
+            --no-hscroll \
+            --preview="git log --oneline --graph --date=short --color=always --pretty='format:%C(auto)%cd %h%d %s' \$(echo {} | cut -d' ' -f1) --" $argv | cut -d' ' -f1
+        )
+
+        if test $status -eq 0
+          commandline --current-token --replace $selected_branch
+        end
+
+        commandline --function repaint
       '';
     };
   };
-
-#  plugins = with pkgs.fishPlugins; [
-#    { name = "fzf-fish"; src = fzf-fish.src; }
-#  ];
 }
