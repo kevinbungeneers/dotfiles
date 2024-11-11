@@ -2,22 +2,7 @@
 This repository contains the configuration for `$HOME`, as well as some other things to fine-tune my macOS experience.
 Most of it is managed with [nix](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager).
 
-## Setup
-**Note:** The steps described in this section are written with a clean macOS installation in mind and serve mostly as documentation for myself.
-
-### Fonts
-I'm using [powerlevel10k](https://github.com/romkatv/powerlevel10k) as ZSH theme. In order for that theme to actually look good, you'll need to have the [MesloLGS NF](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip) fonts installed. More specifically, the `MesloLGSNerdFontMono-{Bold,BoldItalic,Italic,Regular}.tff` fonts.
-
-### Terminal
-My terminal emulator of choice is the one that's included with the OS. I've added a custom terminal configuration, based on [this one](https://github.com/nordtheme/terminal-app). I've changed the default font to the one mentioned above, changed the default window size, etc.
-
-### Dock
-Going through System Settings and dragging icons in and out of the dock is a bit too tedious for my taste. That's why I created a little script that configures the dock just the way I like:
-```console
-cd ~/.dotfiles/dock
-./configure.zsh
-```
-
+## Prerequisites
 ### Development Tools
 Make sure you have your development tools installed. Running `xcode-select --install` in your terminal should work just fine, or you could install Xcode in full.
 
@@ -27,7 +12,7 @@ There are several ways to install Nix. You can use the [official installer](http
 Either one is fine. The one from Determinate Systems has some quality-of-life improvements, such as:
 - survives macOS updates (see https://github.com/NixOS/nix/issues/3616)
 - doesn't configure channels and enables flake support by default
-- offers a built-in way to perform an uninstall
+- offers a built-in way to uninstall Nix
 
 If you went with the official installer, make sure that the `experimental-features` is set to `flakes nix-command repl-flake`. You can check by running:
 ```console
@@ -48,7 +33,7 @@ sudo launchctl stop org.nixos.nix-daemon
 sudo launchctl start org.nixos.nix-daemon
 ```
 
-### Installing our dotfiles
+## Installation
 Now that we have both our development tools and the nix package manager installed, it's time to clone this repository:
 ```console
 git clone git@github.com:kevinbungeneers/dotfiles.git ~/.dotfiles
@@ -59,16 +44,19 @@ Enter the dotfiles directory and run:
 nix run home-manager -- switch --flake .
 ```
 
-### A note about ZSH
-If you want to use the version of ZSH that's been installed with Nix and home-manager, you'll need to set it manually:
+### Configure the Dock
+Going through System Settings and dragging icons in and out of the dock is a bit too tedious for my taste. That's why I created a little script that configures the dock just the way I like:
 ```console
-echo ~/.nix-profile/bin/zsh | sudo tee -a /etc/shells
-chsh -s ~/.nix-profile/bin/zsh
+cd ~/.dotfiles/dock
+./configure.zsh
 ```
 
+### Configure Terminal.app
+My terminal emulator of choice is the one that's included with the OS. I've added a custom terminal configuration, based on [this one](https://github.com/nordtheme/terminal-app).
 
-## Making changes
-Much like a home, dotfiles are never finished. Every now and then you'll switch things up and add, replace or remove tooling and/or configuration options.
+## Management
+### Making changes
+Much like a home, dotfiles are never finished. Occasionally you'll want to switch things up and add, replace or remove tooling and/or configuration options.
 Any changes you've made will need to be activated. From within your dotfiles directory:
 ```console
 nix run home-manager -- switch --flake .
@@ -76,7 +64,7 @@ nix run home-manager -- switch --flake .
 
 **Note:** If your home configuration is named like `<user>`, home-manager will automatically pick the right configuration to apply. Otherwise, you'll need to specify your configuration explicitly, like so: `home-manager switch --flake ".#<name-of-your-configuration>`
 
-## Rolling back changes
+### Rolling back changes
 With each switch you execute, home-manager will create a new "generation". If you were to break something, you could easily perform a rollback to a previous generation.
 
 List all generations:
@@ -89,7 +77,7 @@ Activating a specific generation:
 /nix/store/jyjpp3glrv202sck83y04ji0cl538rjn-home-manager-generation/activate
 ```
 
-## Removing old generations
+### Removing old generations
 As time goes by and the number of generations grows, your nix store will inevitably grow too. Running `nix store gc` won't be as effective, as those binaries are still linked to a home-manager generation.
 
 This is why it's a good idea to remove some older generations from time to time. You can either remove specific generations by doing:
