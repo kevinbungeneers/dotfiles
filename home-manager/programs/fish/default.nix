@@ -21,10 +21,10 @@
     # Source functions
     add_newline
 
-    # CTRL+G CTRL+L for Git Log, using fzf
+    # CTRL+G CTRL+L for browsing Git Log, using fzf
     bind \cg\cl _fzf_git_log
 
-    # CTRL+G CTRL+B for Git Branches, using fzf
+    # CTRL+G CTRL+B for browsing Git Branches, using fzf
     bind \cg\cb _fzf_git_branches
   '';
 
@@ -51,11 +51,20 @@
         echo -ne '\n'
       '';
     };
-    _fzf_git_fzf = {
-      description = "Wraps fzf for git related stuff";
+    _fzf_file_preview = {
+      description = "Function for previewing files in fzf";
       body = ''
-        set -f --export SHELL (command --search fish)
-        fzf $argv
+        if test -f $argv
+          bat --style=numbers --color=always --line-range :500 $argv
+        end
+      '';
+    };
+    _fzf_dir_preview = {
+      description = "Function for previewing directories in fzf";
+      body = ''
+        if test -d $argv
+          lsd --tree --depth 4 --color always $argv
+        end
       '';
     };
     _fzf_git_check = {
@@ -64,7 +73,7 @@
         git rev-parse --git-dir >/dev/null 2>&1 && return
 
         set_color red
-        echo "Not in a git repository"
+        echo -ne "\nNot in a git repository"
         set_color normal
 
         commandline --function repaint
@@ -84,7 +93,7 @@
 
         set -f selected_log_lines (
           git log --no-show-signature --color=always --format=format:$fzf_git_log_format --date=short | \
-          _fzf_git_fzf --ansi \
+          fzf --ansi \
             --multi \
             --scheme=history \
             --prompt="Git Log ❱ " \
@@ -112,7 +121,7 @@
 
         set -f selected_branch (
           git branch --sort=-committerdate --sort=-HEAD --format='%(HEAD)$#$%(color:yellow)%(refname:short)$#$%(color:green)(%(committerdate:relative))$#$%(color:blue)%(subject)%(color:reset)' --color=always | column -ts'$#$' | sed 's/^...//' |
-            _fzf_git_fzf --ansi \
+            fzf --ansi \
             --prompt="Git Branches ❱ " \
             --tiebreak=begin \
             --preview-window=down,border-top,40% \

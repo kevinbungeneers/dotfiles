@@ -2,7 +2,7 @@
   enable = true;
   enableZshIntegration = true;
   enableFishIntegration = true;
-  defaultCommand = "fd --type f";
+  defaultCommand = "fd --type f --strip-cwd-prefix";
   defaultOptions = [
     "--cycle"
     "--height 100%"
@@ -12,14 +12,15 @@
     "--marker=*"
     "--prompt='❱ '"
     "--border='none'"
+    "--with-shell='$HOME/.nix-profile/bin/fish -c'"
   ];
-  fileWidgetCommand = "fd --type f";
+  fileWidgetCommand = "fd --type f --strip-cwd-prefix";
   fileWidgetOptions = [
-    "--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+    "--preview '_fzf_file_preview {}'"
   ];
-  changeDirWidgetCommand = "fd --type d";
+  changeDirWidgetCommand = "fd --type d --max-depth 5";
   changeDirWidgetOptions = [
-    "--preview 'lsd --tree {} | head -200'"
+    "--preview '_fzf_dir_preview {}'"
   ];
   colors = {
     # These are ANSI colors. Apple Terminal does not support 24-bit colors.
