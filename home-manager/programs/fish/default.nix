@@ -63,7 +63,7 @@
       description = "Function for previewing directories in fzf";
       body = ''
         if test -d $argv
-          lsd --tree --depth 4 --color always $argv
+          lsd --tree -I node_modules -I .git --depth 4 --color always $argv
         end
       '';
     };
