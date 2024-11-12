@@ -115,7 +115,7 @@
       '';
     };
     _fzf_git_branches = {
-      description = "Search the output of git log and preview commits";
+      description = "Search the output of git branch and preview the log for the selected branch";
       body = ''
         _fzf_git_check || return
 
