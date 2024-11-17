@@ -1,0 +1,43 @@
+{
+  "bold_folder_labels": true,
+  "detect_identation": false,
+  "file_exclude_patterns": [
+    "*.pyc",
+    "*.pyo",
+    "*.exe",
+    "*.dll",
+    "*.obj",
+    "*.o",
+    "*.a",
+    "*.lib",
+    "*.so",
+    "*.dylib",
+    "*.ncb",
+    "*.sdf",
+    "*.suo",
+    "*.pdb",
+    "*.idb",
+    ".DS_Store",
+    "*.class",
+    "*.psd",
+    "*.db",
+    "._*"
+  ],
+  "font_face": "Menlo",
+  "font_size": 14,
+  "highlight_line": true,
+  "highlight_modified_tabs": true,
+  "line_padding_bottom": 2,
+  "line_padding_top": 2,
+  "open_files_in_new_window": false,
+  "rulers": [
+    80,
+    120
+  ],
+  "scroll_past_end": true,
+  "show_encoding": true,
+  "tab_size": 4,
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true,
+  "use_tab_stops": true
+}

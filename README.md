@@ -1,5 +1,5 @@
 # dotfiles
-This repository contains the configuration for `$HOME`, as well as some other things to fine-tune my macOS experience.
+This repository contains the configuration for `$HOME` as well as some other things to fine-tune my macOS experience.
 Most of it is managed with [nix](https://nixos.org/) and [home-manager](https://github.com/nix-community/home-manager).
 
 ## Prerequisites
@@ -34,15 +34,26 @@ sudo launchctl start org.nixos.nix-daemon
 ```
 
 ## Installation
+> **Warning:** This repository contains _my_ configuration and is specifically tuned to _my_ workflow. Read the source before blindly following along!
+
 Now that we have both our development tools and the nix package manager installed, it's time to clone this repository:
 ```console
 git clone git@github.com:kevinbungeneers/dotfiles.git ~/.dotfiles
 ```
 
-Enter the dotfiles directory and run:
+### Setup Home manager
+Install home-manager and activate the configuration:
 ```console
+cd ~/.dotfiles/home-manager
 nix run home-manager -- switch --flake .
 ```
+
+> **Tip:** To save yourself a few keystrokes you could symlink the home-manager directory to `~/.config/home-manager`.
+This way you won't need to pass the `dir` option when invoking the switch command:
+>```shell
+> ln -s ~/.dotfiles/home-manager ~/.config/home-manager
+> home-manager switch
+> ```
 
 ### Configure the Dock
 Going through System Settings and dragging icons in and out of the dock is a bit too tedious for my taste. That's why I created a little script that configures the dock just the way I like:
@@ -54,13 +65,27 @@ cd ~/.dotfiles/dock
 ### Configure Terminal.app
 My terminal emulator of choice is the one that's included with the OS. I've added a custom terminal configuration, based on [this one](https://github.com/nordtheme/terminal-app).
 
-## Management
+## Managing your home manager configuration
+### Updating inputs
+Both the `home-manager` and `nixpkgs` inputs are pinned to a specific version in the `flake.lock` file.
+Updating these are just a simple command away:
+```shell
+nix flake update
+```
+
+Alternatively you could also update a single input:
+```shell
+nix flake update nixpkgs
+```
+
 ### Making changes
 Much like a home, dotfiles are never finished. Occasionally you'll want to switch things up and add, replace or remove tooling and/or configuration options.
-Any changes you've made will need to be activated. From within your dotfiles directory:
+Any changes you've made will need to be activated. From within your home-manager directory:
 ```console
-nix run home-manager -- switch --flake .
+home-manager -- switch --flake .
 ```
+
+Activating a new generation does not update programs or tools.
 
 **Note:** If your home configuration is named like `<user>`, home-manager will automatically pick the right configuration to apply. Otherwise, you'll need to specify your configuration explicitly, like so: `home-manager switch --flake ".#<name-of-your-configuration>`
 
@@ -69,7 +94,7 @@ With each switch you execute, home-manager will create a new "generation". If yo
 
 List all generations:
 ```console
-nix run home-manager -- generations
+home-manager generations
 ```
 
 Activating a specific generation:
@@ -82,10 +107,10 @@ As time goes by and the number of generations grows, your nix store will inevita
 
 This is why it's a good idea to remove some older generations from time to time. You can either remove specific generations by doing:
 ```console
-nix run home-manager -- remove-generations 1 2
+home-manager remove-generations 1 2
 ```
 
-Or, remove generations that are older than, for instance, 30 days:
+Or, remove generations that are older than 30 days:
 ```console
-nix run home-manager -- expire-generations "-30 days"
+home-manager expire-generations "-30 days"
 ```
