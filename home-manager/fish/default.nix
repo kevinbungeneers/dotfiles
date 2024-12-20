@@ -19,6 +19,7 @@
       # $PATH stuff
       fish_add_path -p /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
       fish_add_path -p ~/Library/Application\ Support/JetBrains/Toolbox/scripts
+      fish_add_path -p /usr/local/go/bin
 
       # Source functions
       add_newline
