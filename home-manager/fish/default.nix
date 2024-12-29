@@ -21,9 +21,6 @@
       fish_add_path -p ~/Library/Application\ Support/JetBrains/Toolbox/scripts
       fish_add_path -p /usr/local/go/bin
 
-      # Source functions
-      add_newline
-
       # CTRL+G CTRL+L for browsing Git Log, using fzf
       bind \cg\cl _fzf_git_log
 
@@ -37,13 +34,6 @@
     };
 
     functions = {
-      fish_title = {
-        description = "Sets both the window and tab title, along with the proxy icon.";
-        body = ''
-          printf '\a\e]7;file://''${hostname}/%s' (echo -n $PWD | sed 's/ /%20/g')
-        '';
-      };
-
       fish_prompt = {
         description = "A very minimal prompt.";
         body = ''

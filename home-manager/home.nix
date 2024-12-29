@@ -23,6 +23,7 @@
     ./fish
     ./fzf
     ./gh
+    ./ghostty
     ./git
     ./gpg
     ./htop

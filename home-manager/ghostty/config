@@ -1,0 +1,8 @@
+command = $HOME/.nix-profile/bin/fish
+confirm-close-surface = false
+font-family = JetBrains Mono NL
+macos-option-as-alt = true
+window-height = 40
+window-padding-x = 10
+window-padding-y = 10
+window-width = 160
