@@ -1,5 +1,4 @@
-command = $HOME/.nix-profile/bin/fish
-confirm-close-surface = false
+command = $HOME/.nix-profile/bin/fish --login --interactive
 font-family = JetBrains Mono NL
 macos-option-as-alt = true
 window-height = 40
