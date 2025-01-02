@@ -1,6 +1,7 @@
 command = $HOME/.nix-profile/bin/fish --login --interactive
 font-family = JetBrains Mono NL
 macos-option-as-alt = true
+theme = nord
 window-height = 40
 window-padding-x = 10
 window-padding-y = 10
