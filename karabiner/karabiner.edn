@@ -1,0 +1,145 @@
+;; !  | means mandatory -   modifier(s) alone when pressend change behavior
+;; #  | means optional  -   modifiers are optional (but atleast one necessary)
+
+;; :!Ca is keycode :a and prefix a with !C
+
+;; C  | left_command
+;; T  | left_control
+;; O  | left_option
+;; S  | left_shift
+;; F  | fn
+;; Q  | right_command
+;; W  | right_control
+;; E  | right_option
+;; R  | right_shift
+
+;; ## | optional any
+;; !! | command + control + option + shift (hyper)
+{:profiles {:Default {:default true
+
+                      ;; to_if_alone_timeout_milliseconds (def: 1000)
+                      ;; The variable to_if_alone_timeout_milliseconds sets how long Karabiner waits to decide whether a key was pressed “alone.”
+                      ;; If no other key, button, or scroll event happens before this timeout expires, the to_if_alone action is sent
+                      ;; otherwise the action is cancelled. The default is 1000 ms.
+                      :alone   300
+
+                      ;; to_if_held_down_threshold_milliseconds (def: 500)
+                      ;; to_if_held_down_threshold_milliseconds sets how long you must keep a key pressed before Karabiner triggers the to_if_held_down action.
+                      ;; If you hold the key for at least this many milliseconds, the action fires; release it sooner and nothing happens.
+                      ;; The default is 500 ms.
+                      :held    500
+
+                      ;; to_delayed_action_delay_milliseconds (def: 500)
+                      ;; to_delayed_action_delay_milliseconds controls how long Karabiner waits before executing the actions listed in to_delayed_action.
+                      ;; Increase the value to make the delay longer, or decrease it for a shorter wait.
+                      ;; The default is 500 ms
+                      :delay   300
+
+                      ;; simultaneous_threshold_milliseconds (def: 50)
+                      ;; simultaneous_threshold_milliseconds sets the maximum time window in which two or more keys must be pressed/released for Karabiner to treat them as “simultaneous.
+                      ;; The default is 50 ms.
+                      :sim     50}}
+
+ :applications {:firefox ["^org\\.mozilla\\.firefox$"] :safari ["^com\\.apple\\.Safari$"] :jetbrains ["^com\\.jetbrains\\.(.*)$"]}
+
+ :simlayer-threshold 200
+
+ :layers {:tab-mode {:key :tab :alone {:key :tab}}}
+
+ :simlayers {:spaces-mode {:key :s}   ; spaces mode   -- control spaces
+             :window-mode {:key :w}   ; window mode   -- move windows around
+             :arrange-mode {:key :a}  ; arrange mode  -- arrange windows
+             :app-mode {:key :period} ; app mode      -- launch applications
+             }
+
+ :templates {:open-app "open -a \"%s\""}
+
+ :main [;
+        ; This only works if you've configured the F1, F2, etc. as standard function keys, requiring you to hold fn to trigger multimedia functions like
+        ; volume control and media playback. (system settings -> keyboard -> keyboard shortcuts -> function keys)
+        ; When not inside a Jetbrains IDE;
+        ; - the function keys (F1, F2, etc.) are mapped back to their equivalent multimedia function
+        ; - holding fn + F1, F2, etc. triggers the function key.
+        ; Basically, we've emulated the default behaviour in karabiner, so that we can work with conditions, like being in an IDE or not.
+        {:des "Switch the behaviour of function keys when in an Jetbrains IDE"
+         :rules [:!jetbrains
+                 [:f1 :display_brightness_decrement]
+                 [:f2 :display_brightness_increment]
+                 [:f3 :mission_control]
+                 [:f4 :!Cspacebar]
+                 [:f5 :f15] ; F15 has been configured to trigger dictation in system settings
+                 [:f6 :f16] ; F16 has been configured to toggle do not disturb in system settings
+                 [:f7 :rewind]
+                 [:f8 :play_or_pause]
+                 [:f9 :fast_forward]
+                 [:f10 :mute]
+                 [:f11 :volume_decrement]
+                 [:f12 :volume_increment]
+
+                 [:!Ff1 :f1]
+                 [:!Ff2 :f2]
+                 [:!Ff3 :f3]
+                 [:!Ff4 :f4]
+                 [:!Ff5 :f5]
+                 [:!Ff6 :f6]
+                 [:!Ff7 :f7]
+                 [:!Ff8 :f8]
+                 [:!Ff9 :f9]
+                 [:!Ff10 :f10]
+                 [:!Ff11 :f11]
+                 [:!Ff12 :f12]]}
+
+        {:des "Firefox Optimisations"
+         :rules [:firefox [:!CSn :!CSp]]}
+
+        {:des "CTRL+[ → switch to prev tab in Safari"
+         :rules [[:!Topen_bracket :!TStab]]}
+
+        {:des "CTRL+] → switch to next tab in Safari"
+         :rules [[:!Tclose_bracket :!Ttab]]}
+
+        {:des "Navigate spaces"
+         :rules [:spaces-mode
+                 [:h :!Tleft_arrow]     ; Previous space
+                 [:l :!Tright_arrow]    ; Next space
+
+                 [:i :!T1]              ; CTRL+1 -> Go to the first space
+                 [:o :!T2]              ; CTRL+2 -> Go to the second space
+                 [:p :!T3]              ; CTRL+3 -> Go to the third space
+                 [:open_bracket :!T4]   ; CTRL+4 -> Go to the fourth space
+                 [:close_bracket :!T5]  ; CTRL+5 -> Go to the fifth space
+                 ]}
+
+        {:des "Launch applications"
+         :rules [:app-mode
+                 [:s [:open-app "Safari"]]
+                 [:grave_accent_and_tilde [:open-app "Ghostty"]]
+                 [:t [:open-app "Things3"]]
+                 [:m [:open-app "Music"]]
+                 [:z [:open-app "Zed"]]]}
+
+        {:des "Window tiling"
+         :rules [:window-mode
+                 [:f [{:key :!!f}]]              ; Fill screen
+                 [:c [{:key :!!c}]]              ; Center
+                 [:r [{:key :!!r}]]              ; Return to previous size
+
+                 [:h [{:key :!!left_arrow}]]     ; Tile left half
+                 [:j [{:key :!!down_arrow}]]     ; Tile bottom half
+                 [:k [{:key :!!up_arrow}]]       ; Tile top half
+                 [:l [{:key :!!right_arrow}]]    ; Tile right half
+
+                 [:u [{:key :!!u}]]              ; Tile top left quarter
+                 [:i [{:key :!!i}]]              ; Tile top right quarter
+
+                 [:n [{:key :!!n}]]              ; Tile bottom left quarter
+                 [:m [{:key :!!m}]]              ; Tile bottom right quarter
+                 ]}
+
+        {:des "Arrange windows"
+         :rules [:arrange-mode
+                 [:h [{:key :!!a}]] ; Arrange left
+                 [:j [{:key :!!s}]] ; Arrange bottom
+                 [:k [{:key :!!w}]] ; Arrange top
+                 [:l [{:key :!!d}]] ; Arrange right
+                 ]}]}
