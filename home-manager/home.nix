@@ -32,6 +32,7 @@
     ./ripgrep
     ./sublime-text
     ./vim
+    ./zsh
   ];
 
   # Let Home Manager install and manage itself.
