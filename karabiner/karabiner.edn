@@ -21,19 +21,19 @@
                       ;; The variable to_if_alone_timeout_milliseconds sets how long Karabiner waits to decide whether a key was pressed “alone.”
                       ;; If no other key, button, or scroll event happens before this timeout expires, the to_if_alone action is sent
                       ;; otherwise the action is cancelled. The default is 1000 ms.
-                      :alone   300
+                      :alone   100
 
                       ;; to_if_held_down_threshold_milliseconds (def: 500)
                       ;; to_if_held_down_threshold_milliseconds sets how long you must keep a key pressed before Karabiner triggers the to_if_held_down action.
                       ;; If you hold the key for at least this many milliseconds, the action fires; release it sooner and nothing happens.
                       ;; The default is 500 ms.
-                      :held    500
+                      :held    200
 
                       ;; to_delayed_action_delay_milliseconds (def: 500)
                       ;; to_delayed_action_delay_milliseconds controls how long Karabiner waits before executing the actions listed in to_delayed_action.
                       ;; Increase the value to make the delay longer, or decrease it for a shorter wait.
                       ;; The default is 500 ms
-                      :delay   300
+                      :delay   500
 
                       ;; simultaneous_threshold_milliseconds (def: 50)
                       ;; simultaneous_threshold_milliseconds sets the maximum time window in which two or more keys must be pressed/released for Karabiner to treat them as “simultaneous.
@@ -43,8 +43,6 @@
  :applications {:firefox ["^org\\.mozilla\\.firefox$"] :safari ["^com\\.apple\\.Safari$"] :jetbrains ["^com\\.jetbrains\\.(.*)$"]}
 
  :simlayer-threshold 200
-
- :layers {:tab-mode {:key :tab :alone {:key :tab}}}
 
  :simlayers {:spaces-mode {:key :s}   ; spaces mode   -- control spaces
              :window-mode {:key :w}   ; window mode   -- move windows around
@@ -89,14 +87,12 @@
                  [:!Ff11 :f11]
                  [:!Ff12 :f12]]}
 
-        {:des "Firefox Optimisations"
+        {:des "CMD+Shift+N opens a new private window in Firefox"
          :rules [:firefox [:!CSn :!CSp]]}
 
-        {:des "CTRL+[ → switch to prev tab in Safari"
-         :rules [[:!Topen_bracket :!TStab]]}
-
-        {:des "CTRL+] → switch to next tab in Safari"
-         :rules [[:!Tclose_bracket :!Ttab]]}
+        {:des "Navigate tabs with CTRL+[ and CTRL+]"
+         :rules [[:!Tclose_bracket :!Ttab]
+                 [:!Topen_bracket :!TStab]]}
 
         {:des "Navigate spaces"
          :rules [:spaces-mode
@@ -118,7 +114,7 @@
                  [:m [:open-app "Music"]]
                  [:z [:open-app "Zed"]]]}
 
-        {:des "Window tiling"
+        {:des "Window tiling and movement"
          :rules [:window-mode
                  [:f [{:key :!!f}]]              ; Fill screen
                  [:c [{:key :!!c}]]              ; Center
@@ -134,7 +130,9 @@
 
                  [:n [{:key :!!n}]]              ; Tile bottom left quarter
                  [:m [{:key :!!m}]]              ; Tile bottom right quarter
-                 ]}
+
+                 [:open_bracket [{:key :!!open_bracket}]]     ; Move window to the previous adjacent display
+                 [:close_bracket [{:key :!!close_bracket}]]]} ; Move window to the next adjacent display
 
         {:des "Arrange windows"
          :rules [:arrange-mode

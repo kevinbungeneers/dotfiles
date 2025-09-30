@@ -25,6 +25,7 @@
     ./gh
     ./ghostty
     ./git
+    ./goku
     ./gpg
     ./htop
     ./jq
