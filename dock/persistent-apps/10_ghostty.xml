@@ -1,14 +1,14 @@
 <dict>
 	<key>tile-type</key>
 	<string>file-tile</string>
-	
+
 	<key>tile-data</key>
 	<dict>
 		<key>bundle-identifier</key>
-		<string>com.apple.Terminal</string>
+		<string>com.mitchellh.ghostty</string>
 
 		<key>file-label</key>
-		<string>Terminal</string>
+		<string>Ghostty</string>
 
 		<key>file-type</key>
 		<integer>1</integer>
@@ -19,7 +19,7 @@
 		<key>file-data</key>
 		<dict>
 			<key>_CFURLString</key>
-			<string>file:///System/Applications/Utilities/Terminal.app/</string>
+			<string>file:///Applications/Ghostty.app/</string>
 
 			<key>_CFURLStringType</key>
 			<integer>15</integer>

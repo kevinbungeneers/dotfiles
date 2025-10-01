@@ -63,9 +63,5 @@ done
 # if there are no static apps/others configured.
 # defaults write com.apple.dock "static-only" -bool "true"
 
-# Will cause LauchPad to reset when the dock restarts.
-# This will cause the first page of LaunchPad to contain Apple applications.
-# Third party applications will start at the second page.
-defaults write com.apple.dock ResetLaunchPad -bool true
-
+# Restart the Dock
 killall Dock
