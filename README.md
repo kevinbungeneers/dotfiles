@@ -68,9 +68,6 @@ Symlink the `~/.dotfiles/zed/settings.json` file to `~/.config/zed/settings.json
 ln -s ~/.dotfiles/zed/settings.json ~/.config/zed/settings.json
 ```
 
-### Configure Terminal.app
-My terminal emulator of choice is the one that's included with the OS. I've added a custom terminal configuration, based on [this one](https://github.com/nordtheme/terminal-app).
-
 ## Managing your home manager configuration
 ### Updating inputs
 Both the `home-manager` and `nixpkgs` inputs are pinned to a specific version in the `flake.lock` file.
