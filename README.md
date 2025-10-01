@@ -62,6 +62,12 @@ cd ~/.dotfiles/dock
 ./configure.zsh
 ```
 
+### Configure Zed
+Symlink the `~/.dotfiles/zed/settings.json` file to `~/.config/zed/settings.json`:
+```console
+ln -s ~/.dotfiles/zed/settings.json ~/.config/zed/settings.json
+```
+
 ### Configure Terminal.app
 My terminal emulator of choice is the one that's included with the OS. I've added a custom terminal configuration, based on [this one](https://github.com/nordtheme/terminal-app).
 
