@@ -12,12 +12,23 @@
 
   outputs = { self, nixpkgs, home-manager, ... }:
     let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      mkHome = { system, user, home, extraModules ? [ ], extraSpecialArgs ? { } }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./dotfiles.nix
+            ./home.nix
+            { home.username = user; home.homeDirectory = home; }
+          ] ++ extraModules;
+          extraSpecialArgs = extraSpecialArgs;
+        };
     in {
-      homeConfigurations."kevin" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
+      homeConfigurations = {
+        "kevin" = mkHome {
+          system = "aarch64-darwin";
+          user = "kevin";
+          home = "/Users/kevin";
+        };
       };
     };
 }

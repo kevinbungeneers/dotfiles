@@ -62,12 +62,6 @@ cd ~/.dotfiles/dock
 ./configure.zsh
 ```
 
-### Configure Zed
-Symlink the `~/.dotfiles/zed/settings.json` file to `~/.config/zed/settings.json`:
-```console
-ln -s ~/.dotfiles/zed/settings.json ~/.config/zed/settings.json
-```
-
 ## Managing your home manager configuration
 ### Updating inputs
 Both the `home-manager` and `nixpkgs` inputs are pinned to a specific version in the `flake.lock` file.
