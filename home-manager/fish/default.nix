@@ -9,7 +9,7 @@
       end
 
       # Activate mise for this session
-      if type -q $HOME/.local/bin/mise
+      if test -x $HOME/.local/bin/mise
         eval "$($HOME/.local/bin/mise activate fish)"
       end
 
@@ -19,7 +19,6 @@
       # $PATH stuff
       fish_add_path -p /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
       fish_add_path -p ~/Library/Application\ Support/JetBrains/Toolbox/scripts
-      fish_add_path -p /usr/local/go/bin
 
       # CTRL+G CTRL+L for browsing Git Log, using fzf
       bind \cg\cl _fzf_git_log
