@@ -18,6 +18,7 @@
 
       # $PATH stuff
       fish_add_path -p /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
+      fish_add_path -p /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin
       fish_add_path -p ~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
       # CTRL+G CTRL+L for browsing Git Log, using fzf
