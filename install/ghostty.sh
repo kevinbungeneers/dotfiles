@@ -1,32 +1,28 @@
 #! /usr/bin/env sh
 #
-# zed.sh - Install Zed on macOS.
+# ghostty.sh - Install Ghostty.
 
 set -eu
 ( set -o pipefail ) >/dev/null 2>&1 && set -o pipefail || true
 
-# Requirements
-for cmd in curl hdiutil ditto jq; do
-  if ! command -v "$cmd" >/dev/null 2>&1; then
-    echo "[ERROR] Required command not found: ${cmd}"
-    exit 1
-  fi
-done
-
-APP_NAME="Zed"
+APP_NAME="Ghostty"
 APP_PATH="/Applications/${APP_NAME}.app"
-DMG_URL="$(curl -fsSl https://api.github.com/repos/zed-industries/zed/releases/latest | jq -r '.assets[] | select(.name == "Zed-aarch64.dmg") | .browser_download_url')"
-
-if [ -z "${DMG_URL}" ]; then
-    echo "[ERROR] Could not determine download URL"
-    exit 1
-fi
+VERSION="1.2.1"
+DMG_URL="https://release.files.ghostty.org/${VERSION}/Ghostty.dmg"
 
 # Exit early if already installed
 if [ -d "${APP_PATH}" ]; then
   echo "[INFO] ${APP_NAME} is already installed. Nothing to do."
   exit 0
 fi
+
+# Requirements
+for cmd in curl hdiutil ditto; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "[ERROR] Required command not found: ${cmd}"
+    exit 1
+  fi
+done
 
 # Setup cleanup
 WD="" # Workdir

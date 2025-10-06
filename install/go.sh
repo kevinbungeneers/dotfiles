@@ -12,9 +12,16 @@ fi
 # Install the latest version of Go
 mise use -g go@latest
 
-# Make sure our $GOPATH exists
-mkdir -p $HOME/Developer/.go
+GOPATH="${HOME}/Developer/.go"
 
-go env -w GOPATH=$HOME/Developer/.go
-go env -w CGO_ENABLED=0
-go env -w GOTOOLCHAIN=local
+# Make sure our $GOPATH exists
+mkdir -p "${GOPATH}"
+
+# Set Go env variables; we're using mise exec because the go binary hasn't been added to the $PATH yet.
+mise exec -- go env -w GOPATH=$GOPATH
+mise exec -- go env -w CGO_ENABLED=0
+mise exec -- go env -w GOTOOLCHAIN=local
+
+# Add the $GOPATH/bin directory to the $PATH
+# Note: I'm not sure how "robust" this is, might need to move this back to the shell init.
+mise config set env.PATH "${GOPATH}/bin"

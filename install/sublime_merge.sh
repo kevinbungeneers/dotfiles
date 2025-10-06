@@ -7,7 +7,8 @@ set -eu
 
 APP_NAME="Sublime Merge"
 APP_PATH="/Applications/${APP_NAME}.app"
-ZIP_URL="https://download.sublimetext.com/sublime_merge_build_2112_mac.zip"
+BUILD_VERSION="2112" # No way to automatically determine the latest version, check https://www.sublimemerge.com/download
+ZIP_URL="https://download.sublimetext.com/sublime_merge_build_${BUILD_VERSION}_mac.zip"
 
 # Exit early if already installed
 if [ -d "${APP_PATH}" ]; then

@@ -7,7 +7,8 @@ set -eu
 
 APP_NAME="Sublime Text"
 APP_PATH="/Applications/${APP_NAME}.app"
-ZIP_URL="https://download.sublimetext.com/sublime_text_build_4200_mac.zip"
+BUILD_VERSION="4200" # No way to automatically determine the latest version, check https://www.sublimetext.com/download
+ZIP_URL="https://download.sublimetext.com/sublime_text_build_${BUILD_VERSION}_mac.zip"
 
 # Exit early if already installed
 if [ -d "${APP_PATH}" ]; then
