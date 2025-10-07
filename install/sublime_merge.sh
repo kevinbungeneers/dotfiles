@@ -53,7 +53,7 @@ if ! unzip -q "${ZIP_PATH}" -d "${WD}"; then
 fi
 
 # Install application
-ditto --noqtn "${WD}/${APP_NAME}.app" "/Applications/"
+ditto --noqtn "${WD}/${APP_NAME}.app" "${APP_PATH}"
 
 # Post-install check
 if [ -d "${APP_PATH}" ]; then

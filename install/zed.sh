@@ -82,7 +82,7 @@ echo "[INFO] Attached DMG at ${MP}"
 
 # Copy to /Applications
 echo "[INFO] Installing ${APP_NAME}..."
-ditto --noqtn "${MP}/${APP_NAME}.app" "/Applications/"
+ditto --noqtn "${MP}/${APP_NAME}.app" "${APP_PATH}"
 
 # Post-install check
 if [ -d "${APP_PATH}" ]; then
