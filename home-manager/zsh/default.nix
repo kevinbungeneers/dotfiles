@@ -5,6 +5,5 @@
     enable = true;
 
     initContent = builtins.readFile ./initContent;
-    profileExtra = builtins.readFile ./profileExtra;
   };
 }

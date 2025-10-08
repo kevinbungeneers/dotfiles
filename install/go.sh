@@ -21,7 +21,3 @@ mkdir -p "${GOPATH}"
 mise exec -- go env -w GOPATH=$GOPATH
 mise exec -- go env -w CGO_ENABLED=0
 mise exec -- go env -w GOTOOLCHAIN=local
-
-# Add the $GOPATH/bin directory to the $PATH
-# Note: I'm not sure how "robust" this is, might need to move this back to the shell init.
-mise config set env.PATH "${GOPATH}/bin"
