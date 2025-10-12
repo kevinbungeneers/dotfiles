@@ -7,7 +7,7 @@ set -eu
 
 APP_NAME="Ghostty"
 APP_PATH="/Applications/${APP_NAME}.app"
-VERSION="1.2.1"
+VERSION="1.2.2"
 DMG_URL="https://release.files.ghostty.org/${VERSION}/Ghostty.dmg"
 
 # Exit early if already installed
