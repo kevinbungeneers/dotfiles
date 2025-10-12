@@ -20,7 +20,7 @@
       fish_add_path -p /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
       fish_add_path -p /Applications/Sublime\ Merge.app/Contents/SharedSupport/bin
       fish_add_path -p $HOME/Library/Application\ Support/JetBrains/Toolbox/scripts
-      type -q go; fish_add_path -p (go env GOPATH)"/bin"
+      type -q go && fish_add_path -p (go env GOPATH)"/bin"
 
       # CTRL+G CTRL+L for browsing Git Log, using fzf
       bind \cg\cl _fzf_git_log
