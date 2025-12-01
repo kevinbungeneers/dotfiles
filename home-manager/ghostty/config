@@ -1,4 +1,4 @@
-command = $HOME/.nix-profile/bin/fish --login --interactive
+command = /etc/profiles/per-user/$USER/bin/fish --login --interactive
 font-family = JetBrains Mono
 macos-option-as-alt = true
 theme = nord

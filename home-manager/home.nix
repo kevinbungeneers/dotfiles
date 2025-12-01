@@ -12,6 +12,8 @@
 
   # Import program specific configuration.
   imports = [
+    ./dotfiles.nix
+
     ./bat
     ./direnv
     ./fd
