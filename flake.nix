@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { self, nix-pkgs, home-manager, darwin, ... }:
+  outputs = { self, nixpkgs, home-manager, darwin, ... }:
     {
       darwinConfigurations = {
         "Kevins-MacBook-Pro" = darwin.lib.darwinSystem {
