@@ -1,11 +1,6 @@
 { config, pkgs, ...}:
 
 let
-  home = config.users.users.kevin.home;
-
-  devTld = "test";
-  vhostsRoot = "/Users/kevin/Developer/.vhosts";
-
    caddyErrorPages = pkgs.runCommand "caddy-error-pages" { } ''
       mkdir -p "$out"
       cat > "$out/502.html" <<'HTML'
@@ -25,7 +20,7 @@ let
       <p>The upstream for this vhost appears to be down.</p>
       <p>Status: <code>{{placeholder "http.error.status_code"}}</code></p>
       <p>Expected unix socket:</p>
-      <pre><code>/${vhostsRoot}/{{.Host}}.sock</code></pre>
+      <pre><code>/${config.localIngress.socketDir}/{{.Host}}.sock</code></pre>
     </body>
   </html>
   HTML
@@ -44,7 +39,7 @@ let
       tls internal {
         on_demand
       }
-      reverse_proxy unix//${vhostsRoot}/{host}.sock
+      reverse_proxy unix//${config.localIngress.socketDir}/{host}.sock
 
       handle_errors {
       		@upstream_down expression {http.error.status_code} in [502, 503, 504]
@@ -60,30 +55,6 @@ let
   '';
 in
 {
-    users.users.kevin = {
-     name = "kevin";
-     home = "/Users/kevin";
-     shell = pkgs.fish; # or whatever shell you want
-   };
-
-   programs.fish.enable = true;
-
-    nixpkgs.hostPlatform = "aarch64-darwin";
-
-    # Nix install is currently being managed by the Determinate distribution.
-    # Will switch to the vanilla upstream Nix distribution later.
-    nix.enable = false;
-
-    #system.configurationRevision = self.rev or self.dirtyRev or null;
-    system.stateVersion = 6;
-
-    services.dnsmasq = {
-      enable = true;
-      addresses = {
-        ${devTld} = "127.0.0.1";
-      };
-    };
-
     launchd.daemons.caddy = {
       command = "${pkgs.caddy}/bin/caddy run --config ${caddyfile} --adapter caddyfile";
       serviceConfig = {
@@ -92,8 +63,8 @@ in
         StandardOutPath = "/var/log/caddy.log";
         StandardErrorPath = "/var/log/caddy.log";
         EnvironmentVariables = {
-          HOME = home;
-          XDG_DATA_HOME = "${home}/Library/Application Support";
+          HOME = "/var/root";
+          XDG_DATA_HOME = "/var/lib/caddy";
         };
       };
     };
