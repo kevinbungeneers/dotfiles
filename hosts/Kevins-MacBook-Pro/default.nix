@@ -4,11 +4,12 @@
   system.stateVersion = 6;
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # Nix install is currently being managed by the Determinate distribution.
-  # Will switch to the vanilla upstream Nix distribution later.
+  # Nix installation/daemon is managed externally (e.g. Determinate or upstream installer),
+  # not by nix-darwin.
   nix.enable = false;
 
   programs.fish.enable = true;
+  programs.zsh.enable = false;
 
   users.users.kevin = {
     name = "kevin";
