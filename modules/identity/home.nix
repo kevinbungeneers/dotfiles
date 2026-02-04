@@ -1,6 +1,6 @@
 {
-    imports = [
-        ./gpg.nix
-        ./ssh.nix
-    ];
+  imports = [
+    ./gpg.nix
+    ./ssh.nix
+  ];
 }

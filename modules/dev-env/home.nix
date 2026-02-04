@@ -1,7 +1,7 @@
 {
-    imports = [
-        ./direnv.nix
-        ./git.nix
-        ./gh.nix
-    ];
+  imports = [
+    ./direnv.nix
+    ./git.nix
+    ./gh.nix
+  ];
 }

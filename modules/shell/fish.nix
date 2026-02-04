@@ -83,7 +83,6 @@
         '';
       };
 
-
       _fzf_git_log = {
         description = "Search the output of git log and preview commits";
         body = ''

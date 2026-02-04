@@ -1,7 +1,7 @@
 {
-    imports = [
-        ./sublime-text
-        ./vim
-        ./zed
-    ];
+  imports = [
+    ./sublime-text
+    ./vim
+    ./zed
+  ];
 }

@@ -30,11 +30,11 @@
 
     colors = {
       # These are ANSI colors. Apple Terminal does not support 24-bit colors.
-      "prompt"  = "-1";
-      "gutter"  = "-1";
+      "prompt" = "-1";
+      "gutter" = "-1";
       "pointer" = "1";
-      "marker"  = "1";
-      "info"    = "3";
+      "marker" = "1";
+      "info" = "3";
       "spinner" = "5";
     };
   };

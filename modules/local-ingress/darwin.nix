@@ -1,7 +1,7 @@
 {
-    imports = [
-        ./shared.nix
-        ./caddy.nix
-        ./dnsmasq.nix
-    ];
+  imports = [
+    ./shared.nix
+    ./caddy.nix
+    ./dnsmasq.nix
+  ];
 }
