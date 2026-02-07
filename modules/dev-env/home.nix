@@ -1,7 +1,8 @@
 {
   imports = [
+    ./delta.nix
     ./direnv.nix
-    ./git.nix
     ./gh.nix
+    ./git.nix
   ];
 }
