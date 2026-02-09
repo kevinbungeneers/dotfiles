@@ -23,18 +23,52 @@
       darwin,
       ...
     }:
+    let
+      hosts = {
+        Kevins-MacBook-Pro = {
+          system = "aarch64-darwin";
+          user = {
+            name = "kevin";
+            homeDir = "/Users/kevin";
+            dotfilesDir = "/Users/kevin/.dotfiles";
+          };
+          hmModule = ./users/kevin/default.nix;
+          hostModule = ./hosts/Kevins-MacBook-Pro/default.nix;
+        };
+      };
+
+      mkDarwinHost =
+        host:
+        darwin.lib.darwinSystem {
+          system = host.system;
+
+          # available in all darwin modules as `host` and `user`
+          specialArgs = {
+            inherit host;
+            user = host.user;
+          };
+
+          modules = [
+            host.hostModule
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              # available in HM modules as `host` and `user`
+              home-manager.extraSpecialArgs = {
+                inherit host;
+                user = host.user;
+              };
+
+              home-manager.users.${host.user.name} = import host.hmModule;
+            }
+          ];
+        };
+    in
     {
-      darwinConfigurations."Kevins-MacBook-Pro" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./hosts/Kevins-MacBook-Pro/default.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.kevin = import ./users/kevin/default.nix;
-          }
-        ];
+      darwinConfigurations = {
+        "Kevins-MacBook-Pro" = mkDarwinHost hosts.Kevins-MacBook-Pro;
       };
 
       formatter.aarch64-darwin =

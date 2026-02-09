@@ -11,8 +11,6 @@
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
   imports = [
-    ../../modules/dotfiles/shared.nix
-
     ../../modules/dev-env/home.nix
     ../../modules/editor/home.nix
     ../../modules/identity/home.nix

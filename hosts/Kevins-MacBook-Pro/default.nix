@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  user,
+  ...
+}:
 
 {
   system.stateVersion = 6;
@@ -11,15 +16,13 @@
   programs.fish.enable = true;
   programs.zsh.enable = false;
 
-  users.users.kevin = {
-    name = "kevin";
-    home = "/Users/kevin";
-    shell = pkgs.fish;
+  users.users.${user.name} = {
+    name = user.name;
+    home = user.homeDir;
   };
 
   localIngress = {
     tlds = [ "test" ];
-    socketDir = "${config.users.users.kevin.home}/Developer/.local-ingress";
   };
 
   imports = [
