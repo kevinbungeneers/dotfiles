@@ -20,7 +20,7 @@ let
         <p>The upstream for this vhost appears to be down.</p>
         <p>Status: <code>{{placeholder "http.error.status_code"}}</code></p>
         <p>Expected unix socket:</p>
-        <pre><code>/${config.localIngress.socketDir}/{{.Host}}.sock</code></pre>
+        <pre><code>${config.localIngress.socketDir}/{{.Host}}.sock</code></pre>
       </body>
     </html>
     HTML
@@ -30,6 +30,18 @@ let
     #{
     #  auto_https disable_redirects
     #}
+
+    {
+      log {
+        output file /var/log/caddy.log {
+          roll_size 10MiB
+          roll_keep 10
+          roll_keep_for 720h
+        }
+        format json
+        level INFO
+      }
+    }
 
     :80 {
         redir https://{host}{uri} permanent
@@ -55,13 +67,20 @@ let
   '';
 in
 {
+  system.activationScripts.postActivation.text = ''
+    ${pkgs.caddy}/bin/caddy trust
+  '';
+
   launchd.daemons.caddy = {
-    command = "${pkgs.caddy}/bin/caddy run --config ${caddyfile} --adapter caddyfile";
+    command = ''
+      /bin/sh -lc '
+        install -d -m 0775 -o root -g local-ingress /var/run/local-ingress
+        exec ${pkgs.caddy}/bin/caddy run --config ${caddyfile} --adapter caddyfile
+      '
+    '';
     serviceConfig = {
       RunAtLoad = true;
       KeepAlive = true;
-      StandardOutPath = "/var/log/caddy.log";
-      StandardErrorPath = "/var/log/caddy.log";
       EnvironmentVariables = {
         HOME = "/var/root";
         XDG_DATA_HOME = "/var/lib/caddy";
