@@ -15,7 +15,7 @@
       "--marker=*"
       "--prompt='❱ '"
       "--border='none'"
-      "--with-shell='$HOME/.nix-profile/bin/fish -c'"
+      "--with-shell='fish -c'"
     ];
 
     fileWidgetCommand = "fd --type f --strip-cwd-prefix";
